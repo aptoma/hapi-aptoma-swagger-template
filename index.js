@@ -2,7 +2,8 @@
 
 var Hoek = require('hoek');
 var defaults = {
-	route: '/swaggerdocs'
+	route: '/swaggerdocs',
+	auth: false
 };
 
 exports.register = function (plugin, options, next) {
@@ -14,7 +15,7 @@ exports.register = function (plugin, options, next) {
 		method: 'GET',
 		path: options.route,
 		config: {
-			auth: false,
+			auth: options.false,
 			handler: function (req, reply) {
 				reply.file(__dirname + '/templates/index.html');
 			}
