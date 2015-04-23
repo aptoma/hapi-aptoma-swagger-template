@@ -1,6 +1,6 @@
 {
   "name": "hapi-aptoma-swagger-template",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Swagger template for use with Hapi powered projects in Aptoma",
   "main": "index.js",
   "license": "MIT",
@@ -33,6 +33,7 @@
     "jscs": "^1.11.3"
   },
   "dependencies": {
+    "handlebars": "^3.0.2",
     "hoek": "^2.11.1"
   }
 }

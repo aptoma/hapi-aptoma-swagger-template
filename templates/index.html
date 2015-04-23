@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Swagger UI</title>
   <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
-  <link href='/docs/swaggerui/css/highlight.default.css' media='screen' rel='stylesheet' type='text/css'/>
-  <link href='/docs/swaggerui/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
-  <script language="JavaScript" type="text/javascript" src="http://kjur.github.io/jsrsasign/jsrsasign-4.1.4-all-min.js"></script>
-  <script language="JavaScript" type="text/javascript" src="http://kjur.github.io/jsjws/ext/json-sans-eval-min.js"></script>
+  <link href='{{assetsPath}}/swaggerui/css/highlight.default.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='{{assetsPath}}/swaggerui/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+  <script language="JavaScript" src="http://kjur.github.io/jsrsasign/jsrsasign-4.1.4-all-min.js"></script>
+  <script language="JavaScript" src="http://kjur.github.io/jsjws/ext/json-sans-eval-min.js"></script>
   <!-- jsjws is broken with hs256 waiting for this to be merged https://github.com/kjur/jsjws/pull/18 -->
-  <script language="JavaScript" type="text/javascript">
+  <script language="JavaScript">
   /*! jws-3.0.2 (c) 2013 Kenji Urushima | kjur.github.com/jsjws/license
    */
   /*
@@ -717,21 +716,21 @@
   };
   </script>
 
-  <script src="/docs/swaggerui/lib/shred.bundle.js" type="text/javascript"></script>
-  <script src='/docs/swaggerui/lib/jquery-1.8.0.min.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/lib/jquery.slideto.min.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/lib/jquery.wiggle.min.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/lib/handlebars-1.0.0.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/lib/underscore-min.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/lib/backbone-min.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/lib/swagger.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/swagger-ui.js' type='text/javascript'></script>
-  <script src='/docs/swaggerui/lib/highlight.7.3.pack.js' type='text/javascript'></script>
-  <script type="text/javascript">
+  <script src="{{assetsPath}}/swaggerui/lib/shred.bundle.js"></script>
+  <script src='{{assetsPath}}/swaggerui/lib/jquery-1.8.0.min.js'></script>
+  <script src='{{assetsPath}}/swaggerui/lib/jquery.slideto.min.js'></script>
+  <script src='{{assetsPath}}/swaggerui/lib/jquery.wiggle.min.js'></script>
+  <script src='{{assetsPath}}/swaggerui/lib/jquery.ba-bbq.min.js'></script>
+  <script src='{{assetsPath}}/swaggerui/lib/handlebars-1.0.0.js'></script>
+  <script src='{{assetsPath}}/swaggerui/lib/underscore-min.js'></script>
+  <script src='{{assetsPath}}/swaggerui/lib/backbone-min.js'></script>
+  <script src='{{assetsPath}}/swaggerui/lib/swagger.js'></script>
+  <script src='{{assetsPath}}/swaggerui/swagger-ui.js'></script>
+  <script src='{{assetsPath}}/swaggerui/lib/highlight.7.3.pack.js'></script>
+  <script>
     $(function () {
       window.swaggerUi = new SwaggerUi({
-        url: window.location.protocol + '//' + window.location.host + '/docs',
+        url: window.location.protocol + '//' + window.location.host + '{{assetsPath}}',
         dom_id: "swagger-ui-container",
         supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
         onComplete: function(swaggerApi, swaggerUi){

@@ -14,7 +14,9 @@ Usage
 server.register({
 	register: require('hapi-aptoma-swagger-template'),
 	options: {
-		route: '/documentation'
+		route: '/documentation',
+		auth: false,
+		swaggeruiAssetsPath: '/docs/' // same value as hapi-swagger endpoint config option
 	}
 }, callback);
 ```
