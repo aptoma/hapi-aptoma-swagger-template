@@ -16,6 +16,7 @@ server.register({
 	options: {
 		route: '/documentation',
 		auth: false,
+		apiAuthMethod: 'jwt', // jwt or apikey
 		swaggeruiAssetsPath: '/docs/' // same value as hapi-swagger endpoint config option
 	}
 }, callback);
