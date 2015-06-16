@@ -6,6 +6,7 @@ var fs = require('fs');
 var defaults = {
 	route: '/swaggerdocs',
 	auth: false,
+	apiAuthMethod: 'jwt',
 	swaggeruiAssetsPath: '/swaggerui-assets'
 };
 
@@ -21,7 +22,11 @@ exports.register = function (plugin, options, next) {
 		config: {
 			auth: options.auth,
 			handler: function (req, reply) {
-				reply(template({assetsPath: options.swaggeruiAssetsPath}));
+				reply(template({
+					assetsPath: options.swaggeruiAssetsPath,
+					jwtAuth: options.authMethod === 'jwt',
+					apikeyAuth: options.authMethod === 'apikey'
+				}));
 			}
 		}
 	});
