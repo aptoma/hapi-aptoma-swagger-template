@@ -744,23 +744,37 @@
       });
       window.swaggerUi.load();
 
-      $('#apiKey, #apiSecret').change(function() {
-        var key = $('#apiKey').val(),
-          secret = $('#apiSecret').val();
+      {{#if jwtAuth}}
+          $('#apiKey, #apiSecret').change(function() {
+            var key = $('#apiKey').val(),
+              secret = $('#apiSecret').val();
 
-        if (!key.length || !secret.length) {
-          return;
-        }
+            if (!key.length || !secret.length) {
+              return;
+            }
 
-        var header = JSON.stringify({ alg: 'HS256', typ: 'JWT' }),
-          iat = Math.floor(Date.now() / 1000),
-          exp = iat + 3600, //expire in 1 hour
-          payload = JSON.stringify({ iss: key, sub: key, exp: exp, iat: iat });
+            var header = JSON.stringify({ alg: 'HS256', typ: 'JWT' }),
+              iat = Math.floor(Date.now() / 1000),
+              exp = iat + 3600, //expire in 1 hour
+              payload = JSON.stringify({ iss: key, sub: key, exp: exp, iat: iat });
 
-        var apiToken = KJUR.jws.JWS.sign(null, header, payload, secret);
-        $('#apiToken').text(apiToken);
-        window.authorizations.add("key", new ApiKeyAuthorization("Authorization", "Bearer " + apiToken, "header"));
-      });
+            var apiToken = KJUR.jws.JWS.sign(null, header, payload, secret);
+            $('#apiToken').text(apiToken);
+            window.authorizations.add("key", new ApiKeyAuthorization("Authorization", "Bearer " + apiToken, "header"));
+          });
+        {{/if}}
+
+        {{#if apikeyAuth}}
+            $('#apiKey').change(function() {
+              var apikey = $('#apiKey').val();
+
+              if (!apikey.length) {
+                return;
+              }
+
+              window.authorizations.add("key", new ApiKeyAuthorization("Authorization", "apikey " + apikey, "header"));
+            });
+        {{/if}}
   });
   </script>
 </head>
@@ -775,12 +789,16 @@
 <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
 <div class="swagger-ui-wrap">
   <strong>apiKey: </strong><input placeholder="apiKey" id="apiKey" name="apiKey" type="text" style="width:200px;"/>
-  <strong>apiSecret: </strong><input placeholder="apiSecret" id="apiSecret" name="apiSecret" type="text" style="width:200px;"/>
+  {{#if jwtAuth}}
+    <strong>apiSecret: </strong><input placeholder="apiSecret" id="apiSecret" name="apiSecret" type="text" style="width:200px;"/>
+  {{/if}}
 </div>
+{{#if jwtAuth}}
 <div class="swagger-ui-wrap" style="margin-top:10px;">
     <div style="">ApiToken</div>
     <code id="apiToken" style="display:block;background:#f5f5f5;color:#A41E22;padding:5px;margin: 10px 0;word-break: break-word;">Enter apiKey and apiSecret to generate token</code>
 </div>
+{{/if}}
 
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>
