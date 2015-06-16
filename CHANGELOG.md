@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.3.2 - 2015-06-16
+------------------
+
+* Fixed: Wrong name for `apiAuthMethod` in template
+
 0.3.1 - 2015-06-16
 ------------------
 
