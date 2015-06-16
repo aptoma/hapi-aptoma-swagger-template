@@ -24,8 +24,8 @@ exports.register = function (plugin, options, next) {
 			handler: function (req, reply) {
 				reply(template({
 					assetsPath: options.swaggeruiAssetsPath,
-					jwtAuth: options.authMethod === 'jwt',
-					apikeyAuth: options.authMethod === 'apikey'
+					jwtAuth: options.apiAuthMethod === 'jwt',
+					apikeyAuth: options.apiAuthMethod === 'apikey'
 				}));
 			}
 		}
